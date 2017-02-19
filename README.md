@@ -3,4 +3,4 @@ A Paper.js practice demo.
 
 Make yourself a snowflake at http://hanax.co/make-a-snowflake/
 
-![preview](http://hanax.github.io/make-a-snowflake/demo.png)
+![preview](http://hanax.github.io/make-a-snowflake/demo_flake.png)

@@ -97,11 +97,13 @@ function cutPaper() {
 function displayPreviewCutArea(intersections, p) {
   clearCutAreaPreview();
   calCutAreaPreview = cutPath.clone();
+  if (calCutAreaPreview.segments.length === 1) calCutAreaPreview.segments = [];
   calCutAreaPreview.visible = false;
   for (var i = 0; i < intersections.length; i ++) {
     calCutAreaPreview.add(intersections[i].point);
   }
   if (p) calCutAreaPreview.add(p);
+
   calCutAreaPreview.closed = true;
   cutAreaPreview = path.intersect(calCutAreaPreview);
   cutAreaPreview.fillColor = '#C17979';
@@ -177,12 +179,12 @@ function onMouseMove(event) {
 
 document.querySelector('#btn-display').addEventListener('click', function() {
   var paths = [];
-  paths.push(path);
   for (var i = 0; i < piece; i ++) {
-    paths.push(path.clone().rotate((360 / piece) * (i + 1), center));
+    if (i % 2) paths.push(path.clone().rotate((360 / piece) * (i + 1), center));
+    else paths.push(path.clone().scale(-1, 1, center).rotate((360 / piece) * (i + 1), center));
   }
   group = new Group(paths);
-
+  path.remove();
   document.querySelector('#btn-display').style.display = 'none';
   document.querySelector('#btn-save').style.display = 'block';
 });
