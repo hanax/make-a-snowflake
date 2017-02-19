@@ -15,6 +15,16 @@ canvas {
   height: 100%;
 }
 
+a {
+  color: rgba(255,255,255,.5);
+  transition: all .3s;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: rgba(255,255,255,.8);
+}
+
 .warning {
   position: absolute;
   left: 0;
@@ -31,11 +41,22 @@ canvas {
 .btns {
   position: absolute;
   left: 20px;
-  top: 40px;
   width: 80px;
-  height: 200px;
+  height: 100px;
   text-align: center;
   z-index: 1;
+}
+
+@media screen and (max-width: 600px) {
+  .btns {
+    bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .btns {
+    top: 40px;
+  }
 }
 
 .btn {
@@ -66,14 +87,4 @@ canvas {
   z-index: 1;
   left: 20px;
   bottom: 20px;
-}
-
-a {
-  color: rgba(255,255,255,.5);
-  transition: all .3s;
-  text-decoration: underline;
-}
-
-a:hover {
-  color: rgba(255,255,255,.8);
 }

@@ -120,6 +120,8 @@ function onMouseDown(event) {
   document.querySelector('.warning').innerText = '';
   try {
     // TODO: detect if first click inside the shape, ignore and warn
+    moveMouseTo(event.point);
+
     lastClickPoint = event.point;
     cutPath.add(lastClickPoint);
     if (cutPath.segments.length < 2) return;
@@ -147,10 +149,13 @@ function onMouseMove(event) {
     mouseMoveRotate = Math.min(0.5, (event.point.y - center.y) / 200);
     return;
   }
+  moveMouseTo(event.point);
+}
 
+function moveMouseTo(point) {
   if (!lastClickPoint) return;
   if (previewLine) previewLine.remove();
-  previewLine = new Path.Line(lastClickPoint, event.point);
+  previewLine = new Path.Line(lastClickPoint, point);
   previewLine.strokeColor = '#C17979';
 
   var intersections = path.getCrossings(previewLine);
